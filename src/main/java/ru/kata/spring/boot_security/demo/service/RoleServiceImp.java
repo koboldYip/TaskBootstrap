@@ -11,7 +11,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class RoleServiceImp implements RoleService {
 
-    private RoleRepository repository;
+    private final RoleRepository repository;
 
     public RoleServiceImp(RoleRepository repository) {
         this.repository = repository;

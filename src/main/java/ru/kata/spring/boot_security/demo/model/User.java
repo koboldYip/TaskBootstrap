@@ -15,12 +15,12 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long id;
-    @Column(name = "username", unique = true)
-    private String username;
     @Column(name = "name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "age")
+    private Byte age;
     @Column(name = "password")
     private String password;
     @Column(name = "email")
@@ -35,17 +35,13 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String firstName, String lastName, String password, String email, List<Role> roles) {
-        this.username = username;
+    public User(String firstName, String lastName, Byte age, String password, String email, List<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.age = age;
         this.password = password;
         this.email = email;
         this.roles = roles;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public Long getId() {
@@ -84,7 +80,15 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
+    }
+
+    public Byte getAge() {
+        return age;
+    }
+
+    public void setAge(Byte age) {
+        this.age = age;
     }
 
     @Override
